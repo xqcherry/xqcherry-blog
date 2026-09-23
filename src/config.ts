@@ -78,9 +78,8 @@ export const licenseConfig: LicenseConfig = {
 };
 
 export const commentConfig: CommentConfig = {
-	// Deploy a Waline server, fill in its public URL, then set this to true.
-	enable: false,
-	serverURL: "",
+	enable: true,
+	serverURL: "https://xqcherry.top/waline",
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
