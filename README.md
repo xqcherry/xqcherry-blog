@@ -35,4 +35,3 @@ draft: false
 ```
 
 `draft: true` 的文章只在本地 dev 显示，不会出现在构建产物中。
-# xqcherry-blog

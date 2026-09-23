@@ -1,0 +1,100 @@
+---
+import "@waline/client/style";
+import { commentConfig } from "../../config";
+
+const serverURL = commentConfig.serverURL.trim();
+---
+
+<section class="waline-container mt-2 border-t border-dashed border-[var(--line-divider)] pt-6 onload-animation" aria-label="评论区">
+    <div id="waline-comments" data-server-url={serverURL}></div>
+</section>
+
+<script>
+function createController() {
+    const controller: NonNullable<Window["walineComments"]> = {
+        instance: null,
+        observer: null,
+        target: null,
+        hooksRegistered: false,
+        destroy() {
+            controller.observer?.disconnect();
+            controller.instance?.destroy();
+            controller.observer = null;
+            controller.instance = null;
+            controller.target = null;
+        },
+        init() {
+            const container = document.getElementById("waline-comments");
+
+            if (!container) {
+                controller.destroy();
+                return;
+            }
+
+            if (controller.target === container) return;
+
+            controller.destroy();
+            const serverURL = container.dataset.serverUrl?.trim();
+            if (!serverURL) return;
+            controller.target = container;
+
+            const mount = async () => {
+                const { init } = await import("@waline/client");
+                if (controller.target !== container || !container.isConnected) return;
+
+                controller.instance = init({
+                    el: container,
+                    serverURL,
+                    path: window.location.pathname,
+                    lang: "zh-CN",
+                    dark: "html.dark",
+                    meta: ["nick", "mail"],
+                    requiredMeta: ["nick", "mail"],
+                    comment: false,
+                    pageview: false,
+                });
+            };
+
+            if (!("IntersectionObserver" in window)) {
+                void mount();
+                return;
+            }
+
+            controller.observer = new IntersectionObserver((entries) => {
+                if (!entries.some((entry) => entry.isIntersecting)) return;
+
+                controller.observer?.disconnect();
+                controller.observer = null;
+                void mount();
+            }, { rootMargin: "400px 0px" });
+            controller.observer.observe(container);
+        },
+    };
+
+    return controller;
+}
+
+const controller = window.walineComments ?? createController();
+window.walineComments = controller;
+controller.init();
+
+const registerHooks = () => {
+    if (controller.hooksRegistered) return;
+
+    window.swup.hooks.on("content:replace", controller.destroy, { before: true });
+    window.swup.hooks.on("page:view", controller.init);
+    controller.hooksRegistered = true;
+};
+
+if (window.swup?.hooks) {
+    registerHooks();
+} else {
+    document.addEventListener("swup:enable", registerHooks, { once: true });
+}
+</script>
+
+<style>
+.waline-container :global(.wl-panel) {
+    margin: 0;
+}
+</style>
