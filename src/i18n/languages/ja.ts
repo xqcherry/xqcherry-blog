@@ -10,6 +10,13 @@ export const ja: Translation = {
 	[Key.tags]: "タグ",
 	[Key.categories]: "カテゴリ",
 	[Key.recentPosts]: "最近の投稿",
+	[Key.siteStats]: "サイト統計",
+	[Key.statPosts]: "記事",
+	[Key.statCategories]: "カテゴリー",
+	[Key.statTags]: "タグ",
+	[Key.statWords]: "総文字数",
+	[Key.statRunningDays]: "運営日数",
+	[Key.toc]: "目次",
 
 	[Key.comments]: "コメント",
 

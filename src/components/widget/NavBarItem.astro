@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+import type { NavBarLink } from "@/types/config";
+import { url } from "@utils/url-utils";
+
+interface Props { link: NavBarLink; }
+const { link } = Astro.props;
+const href = link.external ? link.url : url(link.url);
+const hasChildren = !!link.children?.length;
+---
+
+<div class:list={["relative", { group: hasChildren }]}>
+	<a aria-label={link.name} href={href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener" : undefined} class="btn-plain scale-animation flex rounded-lg h-11 px-5 font-bold active:scale-95">
+		<span class="flex items-center">
+			{link.icon && <Icon name={link.icon} class="mr-1.5 text-[1em] leading-none" />}
+			{link.name}
+			{hasChildren && <Icon name="material-symbols:expand-more-rounded" class="ml-1 text-[1rem] transition-transform group-hover:rotate-180 group-focus-within:rotate-180" />}
+			{link.external && <Icon name="fa6-solid:arrow-up-right-from-square" class="ml-1 -translate-y-[1px] text-[0.875rem] text-black/[0.2] dark:text-white/[0.2]" />}
+		</span>
+	</a>
+	{hasChildren && (
+		<div class="invisible absolute left-1/2 top-full z-50 w-40 -translate-x-1/2 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+			<div class="float-panel p-1.5 shadow-lg shadow-black/10 dark:shadow-none">
+				{link.children?.map((child) => (
+					<a href={child.external ? child.url : url(child.url)} target={child.external ? "_blank" : undefined} rel={child.external ? "noopener" : undefined} class="flex items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-75 transition hover:bg-[var(--btn-plain-bg-hover)] hover:text-[var(--primary)] focus:bg-[var(--btn-plain-bg-hover)] focus:text-[var(--primary)]">
+						<span class="flex items-center">{child.icon && <Icon name={child.icon} class="mr-1.5 text-[1em] leading-none" />}{child.name}</span>
+						{child.external && <Icon name="fa6-solid:arrow-up-right-from-square" class="text-[0.7rem] text-30" />}
+					</a>
+				))}
+			</div>
+		</div>
+	)}
+</div>

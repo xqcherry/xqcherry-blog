@@ -51,6 +51,48 @@ export type Tag = {
 	count: number;
 };
 
+export type SiteStats = {
+	posts: number;
+	categories: number;
+	tags: number;
+	words: number;
+	runningDays: number;
+};
+
+export async function getSiteStats(startedAt: Date): Promise<SiteStats> {
+	const posts = await getRawSortedPosts();
+	const tagNames = new Set<string>();
+	const categoryNames = new Set<string>();
+
+	for (const post of posts) {
+		for (const tag of post.data.tags) tagNames.add(tag.trim());
+		const category = post.data.category?.trim() || i18n(I18nKey.uncategorized);
+		categoryNames.add(category);
+	}
+
+	const wordCounts = await Promise.all(
+		posts.map(async (post) => {
+			const rendered = (await post.render()) as unknown as {
+				remarkPluginFrontmatter?: { words?: number };
+			};
+			return rendered.remarkPluginFrontmatter?.words ?? 0;
+		}),
+	);
+	const millisecondsPerDay = 24 * 60 * 60 * 1000;
+	const startOfToday = new Date();
+	startOfToday.setHours(0, 0, 0, 0);
+	const startOfSite = new Date(startedAt);
+	startOfSite.setHours(0, 0, 0, 0);
+
+	return {
+		posts: posts.length,
+		categories: categoryNames.size,
+		tags: tagNames.size,
+		words: wordCounts.reduce((total, words) => total + words, 0),
+		runningDays: Math.max(1, Math.floor((startOfToday.getTime() - startOfSite.getTime()) / millisecondsPerDay) + 1),
+	};
+}
+
 export async function getTagList(): Promise<Tag[]> {
 	const allBlogPosts = await getCollection<"posts">("posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;

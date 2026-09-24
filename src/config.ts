@@ -5,12 +5,14 @@ import type {
 	NavBarConfig,
 	ProfileConfig,
 	SiteConfig,
+	SponsorConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
 	title: "xqcherry站点",
 	subtitle: "呱~",
+	startedAt: new Date("2026-09-22T00:00:00+08:00"),
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
 		hue: 177, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
@@ -42,10 +44,19 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
-		LinkPreset.About,
+		{
+			name: "关于",
+			url: "/about/",
+			icon: "material-symbols:person-outline-rounded",
+			children: [
+				{ name: "关于我", url: "/about/", icon: "material-symbols:person-outline-rounded" },
+				{ name: "赞助", url: "/sponsor/", icon: "material-symbols:volunteer-activism-outline-rounded" },
+			],
+		},
 		{
 			name: "GitHub",
 			url: "https://github.com/xqcherry", // Internal links should not include the base path, as it is automatically added
+			icon: "fa6-brands:github",
 			external: true, // Show an external link icon and will open in a new tab
 		},
 	],
@@ -78,6 +89,11 @@ export const licenseConfig: LicenseConfig = {
 export const commentConfig: CommentConfig = {
 	enable: true,
 	serverURL: "https://waline.xqcherry.top",
+};
+
+export const sponsorConfig: SponsorConfig = {
+	qrCode: "/sponsor/placeholder.svg",
+	entries: [],
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {

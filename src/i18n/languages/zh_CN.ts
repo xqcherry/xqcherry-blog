@@ -10,6 +10,13 @@ export const zh_CN: Translation = {
 	[Key.tags]: "标签",
 	[Key.categories]: "分类",
 	[Key.recentPosts]: "最新文章",
+	[Key.siteStats]: "站点统计",
+	[Key.statPosts]: "文章",
+	[Key.statCategories]: "分类",
+	[Key.statTags]: "标签",
+	[Key.statWords]: "总字数",
+	[Key.statRunningDays]: "运行天数",
+	[Key.toc]: "目录",
 
 	[Key.comments]: "评论",
 

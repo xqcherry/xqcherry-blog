@@ -421,7 +421,7 @@ const setup = () => {
 		}
 
 		// Hide the TOC while scrolling back to top
-		let toc = document.getElementById('toc-wrapper');
+		let toc = document.getElementById('toc');
 		if (toc) {
 			toc.classList.add('toc-not-ready')
 		}
@@ -442,7 +442,7 @@ const setup = () => {
 			}
 
             // Just make the transition looks better
-            const toc = document.getElementById('toc-wrapper');
+            const toc = document.getElementById('toc');
             if (toc) {
                 toc.classList.remove('toc-not-ready')
             }
@@ -456,7 +456,7 @@ if (window?.swup?.hooks) {
 }
 
 let backToTopBtn = document.getElementById('back-to-top-btn');
-let toc = document.getElementById('toc-wrapper');
+let toc = document.getElementById('toc');
 let navbar = document.getElementById('navbar-wrapper')
 const NAVBAR_SOLID_THRESHOLD = 24
 

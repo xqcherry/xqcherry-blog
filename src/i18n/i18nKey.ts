@@ -7,6 +7,13 @@ enum I18nKey {
 	tags = "tags",
 	categories = "categories",
 	recentPosts = "recentPosts",
+	siteStats = "siteStats",
+	statPosts = "statPosts",
+	statCategories = "statCategories",
+	statTags = "statTags",
+	statWords = "statWords",
+	statRunningDays = "statRunningDays",
+	toc = "toc",
 
 	comments = "comments",
 

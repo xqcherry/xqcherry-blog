@@ -10,6 +10,13 @@ export const id: Translation = {
 	[Key.tags]: "Tag",
 	[Key.categories]: "Kategori",
 	[Key.recentPosts]: "Postingan Terbaru",
+	[Key.siteStats]: "Statistik Situs",
+	[Key.statPosts]: "Artikel",
+	[Key.statCategories]: "Kategori",
+	[Key.statTags]: "Tag",
+	[Key.statWords]: "Kata",
+	[Key.statRunningDays]: "Hari aktif",
+	[Key.toc]: "Daftar isi",
 
 	[Key.comments]: "Komentar",
 

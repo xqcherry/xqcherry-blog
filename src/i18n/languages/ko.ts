@@ -10,6 +10,13 @@ export const ko: Translation = {
 	[Key.tags]: "태그",
 	[Key.categories]: "카테고리",
 	[Key.recentPosts]: "최근 게시물",
+	[Key.siteStats]: "사이트 통계",
+	[Key.statPosts]: "글",
+	[Key.statCategories]: "카테고리",
+	[Key.statTags]: "태그",
+	[Key.statWords]: "총 단어",
+	[Key.statRunningDays]: "운영 일수",
+	[Key.toc]: "목차",
 
 	[Key.comments]: "댓글",
 

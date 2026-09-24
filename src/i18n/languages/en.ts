@@ -10,6 +10,13 @@ export const en: Translation = {
 	[Key.tags]: "Tags",
 	[Key.categories]: "Categories",
 	[Key.recentPosts]: "Recent Posts",
+	[Key.siteStats]: "Site Statistics",
+	[Key.statPosts]: "Posts",
+	[Key.statCategories]: "Categories",
+	[Key.statTags]: "Tags",
+	[Key.statWords]: "Words",
+	[Key.statRunningDays]: "Days Online",
+	[Key.toc]: "Table of Contents",
 
 	[Key.comments]: "Comments",
 

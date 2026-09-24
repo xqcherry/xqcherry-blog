@@ -3,6 +3,7 @@ import type { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants";
 export type SiteConfig = {
 	title: string;
 	subtitle: string;
+	startedAt: Date;
 
 	lang:
 		| "en"
@@ -53,7 +54,9 @@ export enum LinkPreset {
 export type NavBarLink = {
 	name: string;
 	url: string;
+	icon?: string;
 	external?: boolean;
+	children?: NavBarLink[];
 };
 
 export type NavBarConfig = {
@@ -80,6 +83,18 @@ export type LicenseConfig = {
 export type CommentConfig = {
 	enable: boolean;
 	serverURL: string;
+};
+
+export type SponsorEntry = {
+	name: string;
+	amount?: string;
+	date?: string;
+	message?: string;
+};
+
+export type SponsorConfig = {
+	qrCode: string;
+	entries: SponsorEntry[];
 };
 
 export type LIGHT_DARK_MODE =

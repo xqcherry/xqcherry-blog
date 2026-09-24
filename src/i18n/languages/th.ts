@@ -10,6 +10,13 @@ export const th: Translation = {
 	[Key.tags]: "ป้ายกำกับ",
 	[Key.categories]: "หมวดหมู่",
 	[Key.recentPosts]: "โพสต์ล่าสุด",
+	[Key.siteStats]: "สถิติเว็บไซต์",
+	[Key.statPosts]: "บทความ",
+	[Key.statCategories]: "หมวดหมู่",
+	[Key.statTags]: "แท็ก",
+	[Key.statWords]: "คำ",
+	[Key.statRunningDays]: "วันออนไลน์",
+	[Key.toc]: "สารบัญ",
 
 	[Key.comments]: "ความคิดเห็น",
 

@@ -1,0 +1,16 @@
+---
+import StaticPageCard from "@components/misc/StaticPageCard.astro";
+import SponsorList from "@components/sponsor/SponsorList.astro";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { sponsorConfig } from "@/config";
+---
+
+<MainGridLayout title="赞助" description="感谢每一份支持">
+	<StaticPageCard title="赞助" description="你的支持会让这个小站持续更新。">
+		<div class="mx-auto flex max-w-sm flex-col items-center rounded-2xl bg-[var(--btn-plain-bg-hover)] px-6 py-7 text-center">
+			<img src={sponsorConfig.qrCode} alt="赞助收款二维码" width="240" height="240" class="aspect-square w-48 rounded-xl bg-white p-2 shadow-sm" />
+			<p class="mt-4 text-sm text-50">扫码赞助；二维码可在站点配置中替换。</p>
+		</div>
+		<SponsorList entries={sponsorConfig.entries} />
+	</StaticPageCard>
+</MainGridLayout>
