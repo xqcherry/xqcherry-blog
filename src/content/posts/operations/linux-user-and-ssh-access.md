@@ -2,7 +2,7 @@
 title: Linux 服务器初始化：创建管理员用户并启用 SSH 密钥登录
 published: 2026-05-27
 description: 一份最小而安全的 Linux 服务器初始化流程：创建日常管理员账户、配置 sudo、部署 SSH 公钥，并在验证后关闭密码登录。
-tags: [Linux, SSH, 服务器安全, 运维]
+tags: [Linux, 网络安全, 运维]
 category: 运维
 draft: false
 ---

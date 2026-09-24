@@ -2,7 +2,7 @@
 title: 一次一密与完善保密：理论上最安全的加密方案
 published: 2026-09-17
 description: 从异或运算出发，理解一次一密为何能够达到完善保密，以及它为什么难以在通用系统中落地。
-tags: [密码学, 一次一密, OTP, 完善保密, 异或]
+tags: [密码学]
 category: 密码学
 draft: false
 ---

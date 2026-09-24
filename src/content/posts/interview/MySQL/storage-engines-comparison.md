@@ -2,7 +2,7 @@
 title: MySQL 存储引擎怎么选：InnoDB、MyISAM 与 MEMORY
 published: 2026-09-24
 description: 从 MySQL Server 层、存储引擎能力、锁粒度和数据持久化出发，比较常见存储引擎的使用边界。
-tags: [MySQL, InnoDB, MyISAM, MEMORY, 存储引擎]
+tags: [MySQL]
 category: 后端基础
 draft: false
 ---

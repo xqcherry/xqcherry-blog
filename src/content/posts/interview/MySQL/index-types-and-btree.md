@@ -2,7 +2,7 @@
 title: MySQL 索引类型与 B+ 树：结构、分类和失效场景
 published: 2026-09-24
 description: 按数据结构、字段特性、列数和物理存储方式梳理 MySQL 索引，并解释 InnoDB 为什么默认选择 B+ 树。
-tags: [MySQL, 索引, B+树, 联合索引]
+tags: [MySQL, 索引]
 category: 后端基础
 draft: false
 ---

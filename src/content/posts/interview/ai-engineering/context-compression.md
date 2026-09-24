@@ -2,7 +2,7 @@
 title: 上下文压缩怎么做：该保留什么，哪些信息可以再生
 published: 2026-09-24
 description: 从用户意图、关键决策、故障记录和当前状态出发，建立 Agent 上下文压缩的保留与丢弃原则。
-tags: [AI Agent, 上下文压缩, 记忆管理, Coding Agent]
+tags: [AI Agent]
 category: AI 工程
 draft: false
 ---

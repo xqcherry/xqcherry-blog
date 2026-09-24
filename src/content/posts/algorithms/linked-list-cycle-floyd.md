@@ -2,7 +2,7 @@
 title: 141. 环形链表：哈希集合判圈
 published: 2026-09-23
 description: 记录已经访问过的节点；再次遇到同一节点时，说明链表存在环。
-tags: [链表, 哈希集合]
+tags: [链表, 哈希表]
 category: 算法题解
 draft: false
 ---

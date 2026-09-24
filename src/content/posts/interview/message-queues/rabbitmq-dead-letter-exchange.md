@@ -2,7 +2,7 @@
 title: RabbitMQ 消息何时进入死信交换机
 published: 2026-09-24
 description: 梳理 RabbitMQ 死信的三个触发条件，并比较 TTL+DLX 延迟队列与官方延迟消息插件。
-tags: [消息队列, RabbitMQ, 死信交换机, 延迟队列, TTL]
+tags: [消息队列, RabbitMQ]
 category: 后端基础
 draft: false
 ---

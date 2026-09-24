@@ -2,7 +2,7 @@
 title: Agent 的 ReAct 与 Plan：何时边做边想，何时先规划
 published: 2026-09-24
 description: 对比 ReAct 与 Plan 两种 Agent 执行模式，理解它们在不确定任务和复杂长任务中的适用边界。
-tags: [AI Agent, ReAct, 任务规划, 工具调用]
+tags: [AI Agent]
 category: AI 工程
 draft: false
 ---

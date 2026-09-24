@@ -2,7 +2,7 @@
 title: 两数之和：哈希表查找补数
 published: 2026-09-20
 description: 先用哈希表记录数值与下标，再逐个查询目标补数，将两数之和从枚举所有组合优化到线性时间。
-tags: [哈希表, 数组, 查找]
+tags: [哈希表, 数组]
 category: 算法题解
 draft: false
 ---

@@ -2,7 +2,7 @@
 title: 伪随机生成器与流密码：用短密钥保护长消息
 published: 2026-09-17
 description: 理解 PRG 如何将短种子扩展为密钥流，以及流密码与一次一密在安全模型和使用约束上的差异。
-tags: [密码学, PRG, 流密码, 对称加密]
+tags: [密码学]
 category: 密码学
 draft: false
 ---

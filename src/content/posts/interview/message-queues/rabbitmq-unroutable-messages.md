@@ -2,7 +2,7 @@
 title: RabbitMQ 无法路由的消息：备份交换机、Return 与死信
 published: 2026-09-24
 description: 区分交换机路由失败和队列消费失败，梳理 Alternate Exchange、mandatory 回退与死信队列的适用边界。
-tags: [消息队列, RabbitMQ, 死信队列, 消息可靠性]
+tags: [消息队列, RabbitMQ]
 category: 后端基础
 draft: false
 ---

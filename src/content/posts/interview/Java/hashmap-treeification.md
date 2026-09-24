@@ -2,7 +2,7 @@
 title: JDK 1.8 为什么让 HashMap 桶链表树化
 published: 2026-09-24
 description: 解释 HashMap 在冲突严重时引入红黑树的原因、树化阈值，以及它对哈希碰撞攻击的缓解作用。
-tags: [Java, HashMap, 红黑树, 哈希碰撞]
+tags: [Java, HashMap]
 category: 后端基础
 draft: false
 ---

@@ -2,7 +2,7 @@
 title: 52. N 皇后 II：回溯与方向检查
 published: 2026-09-18
 description: 逐行放置皇后，在已有棋盘中检查同列和两条对角线是否冲突，统计所有合法布局。
-tags: [回溯, DFS, 剪枝]
+tags: [回溯, DFS]
 category: 算法题解
 draft: false
 ---

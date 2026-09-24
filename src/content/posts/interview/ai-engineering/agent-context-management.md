@@ -2,7 +2,7 @@
 title: Agent 长上下文管理：压缩、检索与分层记忆
 published: 2026-09-24
 description: 梳理 Agent 上下文超过窗口限制时的常见处理方式：滑动窗口、摘要压缩、检索增强、向量检索与分层记忆。
-tags: [AI Agent, 上下文工程, RAG, 记忆管理]
+tags: [AI Agent]
 category: AI 工程
 draft: false
 ---

@@ -2,7 +2,7 @@
 title: 罗马数字转整数：识别特殊减法对
 published: 2026-09-20
 description: 将基础符号和六种特殊减法组合分别映射为数值，通过线性扫描完成转换。
-tags: [字符串, 模拟, 哈希表]
+tags: [字符串, 哈希表]
 category: 算法题解
 draft: false
 ---

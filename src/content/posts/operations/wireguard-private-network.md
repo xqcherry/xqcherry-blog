@@ -2,7 +2,7 @@
 title: WireGuard 组网实践：用 VPS 建立私有服务器网络
 published: 2026-06-28
 description: 以一台公网 VPS 为中心，配置 WireGuard 服务端与多个节点，建立仅供内部服务访问的加密私有网段。
-tags: [WireGuard, VPN, 网络安全, Linux, 运维]
+tags: [网络安全, Linux, 运维]
 category: 运维
 draft: false
 ---

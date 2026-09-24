@@ -2,7 +2,7 @@
 title: MySQL 发生死锁怎么办：检测、定位与处理
 published: 2026-09-24
 description: 说明 InnoDB 自动死锁检测如何回滚事务，以及如何通过状态信息定位阻塞线程并进行人工干预。
-tags: [MySQL, 死锁, InnoDB, 事务]
+tags: [MySQL, 锁, 事务]
 category: 后端基础
 draft: false
 ---

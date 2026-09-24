@@ -2,7 +2,7 @@
 title: MySQL 索引下推：把过滤提前到存储引擎
 published: 2026-09-24
 description: 解释 MySQL 5.6 引入的索引下推如何减少回表，并说明它与联合索引最左前缀和主键查询的关系。
-tags: [MySQL, 索引下推, 联合索引, 查询优化]
+tags: [MySQL, 索引]
 category: 后端基础
 draft: false
 ---

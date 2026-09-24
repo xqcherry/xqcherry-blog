@@ -2,7 +2,7 @@
 title: MySQL MVCC：Undo Log、版本链与 ReadView
 published: 2026-09-24
 description: 从隐藏字段、Undo Log 和版本链出发，理解 InnoDB 快照读如何通过 ReadView 判断可见版本。
-tags: [MySQL, MVCC, Undo Log, ReadView, 事务]
+tags: [MySQL, 事务]
 category: 后端基础
 draft: false
 ---

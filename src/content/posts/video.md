@@ -2,7 +2,7 @@
 title: 在文章中插入视频
 published: 2023-08-01
 description: 演示如何在博客文章中嵌入视频。
-tags: [示例, 视频]
+tags: [示例]
 category: 示例
 draft: true
 ---

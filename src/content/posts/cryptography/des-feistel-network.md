@@ -2,7 +2,7 @@
 title: DES 与 Feistel 网络：理解经典分组密码的轮函数设计
 published: 2026-09-18
 description: 以 DES 为例梳理 Feistel 网络、16 轮处理和密钥长度限制，并说明它为何只适合作为学习材料。
-tags: [密码学, DES, Feistel, 分组密码]
+tags: [密码学]
 category: 密码学
 draft: false
 ---

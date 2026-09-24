@@ -2,7 +2,7 @@
 title: JDK 1.8 对 HashMap 的三项重要改进
 published: 2026-09-24
 description: 除了红黑树，JDK 1.8 还简化了哈希计算、优化了扩容迁移，并将链表插入从头插法改为尾插法。
-tags: [Java, HashMap, JDK 8, 扩容]
+tags: [Java, HashMap]
 category: 后端基础
 draft: false
 ---

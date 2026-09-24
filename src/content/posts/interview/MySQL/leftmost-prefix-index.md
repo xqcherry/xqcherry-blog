@@ -2,7 +2,7 @@
 title: MySQL 联合索引的最左前缀匹配原则
 published: 2026-09-24
 description: 以联合索引 (a,b,c) 为例，解释最左匹配、范围条件和索引列顺序的设计方法。
-tags: [MySQL, 联合索引, 最左前缀, 查询优化]
+tags: [MySQL, 索引]
 category: 后端基础
 draft: false
 ---

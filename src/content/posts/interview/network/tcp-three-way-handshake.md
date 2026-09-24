@@ -2,7 +2,7 @@
 title: TCP 三次握手：序列号确认与连接建立
 published: 2026-09-24
 description: 通过 SYN、ACK 和序列号变化，理解 TCP 为什么需要三次握手以及连接建立后的状态变化。
-tags: [计算机网络, TCP, 网络协议]
+tags: [计算机网络]
 category: 后端基础
 draft: false
 ---

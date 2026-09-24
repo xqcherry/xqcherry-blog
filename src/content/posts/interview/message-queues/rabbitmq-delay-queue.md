@@ -2,7 +2,7 @@
 title: RabbitMQ 延迟队列：TTL+DLX 与延迟消息插件
 published: 2026-09-24
 description: 解释 RabbitMQ 原生延迟队列的组合方案、TTL 队头阻塞问题，以及延迟消息插件的实现取舍。
-tags: [消息队列, RabbitMQ, 延迟队列, TTL, DLX]
+tags: [消息队列, RabbitMQ]
 category: 后端基础
 draft: false
 ---

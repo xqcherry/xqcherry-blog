@@ -2,7 +2,7 @@
 title: 分组密码：混淆、扩散与 Feistel / SPN 结构
 published: 2026-09-17
 description: 从混淆和扩散两项设计目标出发，理解分组密码的基本工作方式，以及 Feistel 和 SPN 两类典型结构。
-tags: [密码学, 分组密码, Feistel, SPN, AES, DES]
+tags: [密码学]
 category: 密码学
 draft: false
 ---

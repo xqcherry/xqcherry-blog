@@ -2,7 +2,7 @@
 title: HashMap 扩容机制：容量翻倍后的高低位迁移
 published: 2026-09-24
 description: 解释 HashMap 的默认容量、负载因子与 JDK 8 扩容迁移规则，理解节点为何只会留在原位或移动一个旧容量。
-tags: [Java, HashMap, 数据结构, 扩容机制]
+tags: [Java, HashMap]
 category: 后端基础
 draft: false
 ---

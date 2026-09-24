@@ -2,7 +2,7 @@
 title: 从置换到代换：古典密码的两种基本思路
 published: 2026-09-17
 description: 通过密码棒、栅栏、凯撒、维吉尼亚和 Playfair 密码，理解密码设计中置换与代换两条基础路线。
-tags: [密码学, 古典密码, 置换, 代换]
+tags: [密码学]
 category: 密码学
 draft: false
 ---

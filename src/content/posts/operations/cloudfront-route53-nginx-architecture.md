@@ -2,7 +2,7 @@
 title: 从域名到应用：Route 53、CloudFront、Nginx 与 Next.js 的部署链路
 published: 2026-07-21
 description: 用一个通用架构说明域名注册、DNS、CloudFront、源站域名、Nginx 与 Next.js 各自的职责，以及请求如何从浏览器抵达应用。
-tags: [AWS, Route 53, CloudFront, Nginx, Next.js, 运维]
+tags: [AWS, Nginx, Next.js, 运维]
 category: 运维
 draft: false
 ---

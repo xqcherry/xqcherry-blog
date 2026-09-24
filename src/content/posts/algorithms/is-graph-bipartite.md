@@ -2,7 +2,7 @@
 title: 785. 判断二分图：DFS 染色与冲突检测
 published: 2026-09-20
 description: 将相邻顶点染成不同颜色；一旦边的两端颜色相同，图就不是二分图。
-tags: [图, DFS, 染色]
+tags: [图, DFS]
 category: 算法题解
 draft: false
 ---

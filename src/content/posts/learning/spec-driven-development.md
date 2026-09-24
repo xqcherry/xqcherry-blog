@@ -2,7 +2,7 @@
 title: 学习笔记：用 Spec Coding 让 AI 编程更可控
 published: 2026-08-22
 description: 从意图、规格到验证，理解 Spec Coding 为什么能减少 AI 编程中的返工，并厘清 Spec、设计、计划与实现的边界。
-tags: [学习, AI 编程, Spec Coding, 软件工程]
+tags: [AI 编程]
 category: 学习
 draft: false
 ---

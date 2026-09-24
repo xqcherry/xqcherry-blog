@@ -2,7 +2,7 @@
 title: HashMap 内部结构：数组、链表与红黑树如何协作
 published: 2026-09-24
 description: 从桶数组、哈希冲突到树化与退化，梳理 Java HashMap 的存储和查找过程，并解释 null key 的处理。
-tags: [Java, HashMap, 哈希表, 红黑树]
+tags: [Java, HashMap, 哈希表]
 category: 后端基础
 draft: false
 ---

@@ -2,7 +2,7 @@
 title: synchronized 与 ReentrantLock：功能、性能与使用边界
 published: 2026-09-24
 description: 对比 Java 内置监视器锁和 AQS 可重入锁，理解公平性、中断、超时与资源释放的取舍。
-tags: [Java, 并发编程, synchronized, ReentrantLock, AQS]
+tags: [Java, 并发编程]
 category: 后端基础
 draft: false
 ---

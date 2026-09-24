@@ -2,7 +2,7 @@
 title: MySQL B+ 树查询全过程：从根节点到页目录
 published: 2026-09-24
 description: 按树上定位、叶子页查找和记录遍历三个阶段，理解 InnoDB 如何在 B+ 树中查询一条数据。
-tags: [MySQL, B+树, InnoDB, 索引]
+tags: [MySQL, 索引]
 category: 后端基础
 draft: false
 ---

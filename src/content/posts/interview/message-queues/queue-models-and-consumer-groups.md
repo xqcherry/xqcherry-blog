@@ -2,7 +2,7 @@
 title: 消息队列的两种模型：队列、发布订阅与消费者组
 published: 2026-09-24
 description: 对比点对点队列模型和发布订阅模型，并解释 Kafka、RocketMQ 如何用消费者组同时实现负载均衡和消息广播。
-tags: [消息队列, Kafka, RocketMQ, 消费者组]
+tags: [消息队列]
 category: 后端基础
 draft: false
 ---

@@ -2,7 +2,7 @@
 title: 三数之和：排序加双指针去重
 published: 2026-09-20
 description: 固定第一个数后，用相向双指针寻找剩余两数，并在三个层次处理重复值。
-tags: [双指针, 排序, 数组]
+tags: [双指针, 数组]
 category: 算法题解
 draft: false
 ---
