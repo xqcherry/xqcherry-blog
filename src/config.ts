@@ -77,7 +77,7 @@ export const licenseConfig: LicenseConfig = {
 
 export const commentConfig: CommentConfig = {
 	enable: true,
-	serverURL: "https://xqcherry.top/waline",
+	serverURL: "https://waline.xqcherry.top",
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
