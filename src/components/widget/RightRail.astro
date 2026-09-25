@@ -15,17 +15,15 @@ const { headings = [] } = Astro.props;
 const isPostsRoute = Astro.url.pathname.startsWith(url("/posts/"));
 ---
 
-<aside id="toc" class:list={["hidden 2xl:block absolute left-[calc(100%_+_1rem)] top-0 w-[var(--toc-width)] transition", { "toc-hide": siteConfig.banner.enable }]} aria-label="辅助信息">
-	<div id="toc-inner-wrapper" class="sticky top-4 flex h-[calc(100vh_-_2rem)] w-[var(--toc-width)] flex-col gap-4">
+	<aside id="toc" class:list={["hidden 2xl:block absolute bottom-0 left-[calc(100%_+_1rem)] top-0 w-[var(--toc-width)] transition", { "toc-hide": siteConfig.banner.enable }]} aria-label="辅助信息">
+	<div id="toc-inner-wrapper" class="sticky top-4 flex max-h-[calc(100vh_-_2rem)] w-[var(--toc-width)] flex-col gap-4">
 		<SiteStats class="shrink-0" />
-		<div class="flex min-h-0 flex-1 flex-col">
-			{siteConfig.toc.enable && isPostsRoute && (
-				<WidgetLayout name={i18n(I18nKey.toc)} id="table-of-contents" class="flex min-h-0 flex-1 flex-col" contentClass="flex min-h-0 flex-1 overflow-hidden" >
-					<div data-toc-scroll class="h-full overflow-y-auto hide-scrollbar">
-						<TOC headings={headings} />
-					</div>
-				</WidgetLayout>
-			)}
-		</div>
+		{siteConfig.toc.enable && isPostsRoute && (
+			<WidgetLayout name={i18n(I18nKey.toc)} id="table-of-contents" class="flex min-h-0 shrink flex-col" contentClass="flex min-h-0 flex-1 overflow-hidden" >
+				<div data-toc-scroll class="min-h-0 flex-1 overflow-y-auto hide-scrollbar">
+					<TOC headings={headings} />
+				</div>
+			</WidgetLayout>
+		)}
 	</div>
 </aside>
