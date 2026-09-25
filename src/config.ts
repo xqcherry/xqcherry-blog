@@ -45,6 +45,11 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Home,
 		LinkPreset.Archive,
 		{
+			name: "留言板",
+			url: "/guestbook/",
+			icon: "material-symbols:chat-bubble-outline-rounded",
+		},
+		{
 			name: "关于",
 			url: "/about/",
 			icon: "material-symbols:person-outline-rounded",
