@@ -3,7 +3,7 @@ title: Spring 容器启动过程：从 BeanDefinition 到 AOP 代理
 published: 2026-09-24
 description: 按容器刷新、Bean 定义注册、实例化、依赖注入和后置处理器的顺序，梳理 Spring 启动生命周期。
 tags: [Java]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

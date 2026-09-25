@@ -3,7 +3,7 @@ title: ConcurrentHashMap 的实现：分段锁到桶级并发
 published: 2026-09-24
 description: 对比 JDK 1.7 与 JDK 1.8 的 ConcurrentHashMap，梳理分段锁、CAS、synchronized 和渐进式扩容。
 tags: [Java, 并发编程]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

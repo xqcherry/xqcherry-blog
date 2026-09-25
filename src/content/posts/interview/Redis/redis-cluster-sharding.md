@@ -3,7 +3,7 @@ title: Redis Cluster：哈希槽、Gossip 与故障转移
 published: 2026-09-24
 description: 从数据分片、节点通信和客户端重定向三个角度，梳理 Redis Cluster 的去中心化实现。
 tags: [Redis, 分布式系统]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

@@ -3,7 +3,7 @@ title: Java 集合框架：List、Set、Queue 与 Map 如何选择
 published: 2026-09-24
 description: 梳理 Java 集合框架的主要接口和实现，并结合查询、插入、排序与并发场景说明选型边界。
 tags: [Java, 并发编程]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

@@ -3,7 +3,7 @@ title: MySQL 覆盖索引：如何避免回表
 published: 2026-09-24
 description: 解释覆盖索引、回表和索引下推的区别，并说明如何通过联合索引让查询直接从索引返回结果。
 tags: [MySQL, 索引]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

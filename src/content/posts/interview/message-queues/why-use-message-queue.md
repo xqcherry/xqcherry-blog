@@ -3,7 +3,7 @@ title: 为什么需要消息队列：解耦、异步与削峰
 published: 2026-09-24
 description: 用服务解耦、异步处理和流量削峰三个角度，理解消息队列解决的核心工程问题。
 tags: [消息队列]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

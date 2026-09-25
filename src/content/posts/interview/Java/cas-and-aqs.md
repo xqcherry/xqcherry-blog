@@ -3,7 +3,7 @@ title: Java 并发基础：CAS、AQS 与锁的实现关系
 published: 2026-09-24
 description: 从 CAS 的乐观更新，到 AQS 的 state 与等待队列，理解 Java 并发同步器的底层协作方式。
 tags: [Java, 并发编程]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

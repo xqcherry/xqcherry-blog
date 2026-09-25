@@ -3,7 +3,7 @@ title: MySQL 四种事务隔离级别与选型取舍
 published: 2026-09-24
 description: 对比读未提交、读已提交、可重复读和串行化，说明它们能避免哪些异常读以及为什么有些系统偏向读已提交。
 tags: [MySQL, 事务]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

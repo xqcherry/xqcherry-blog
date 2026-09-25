@@ -3,7 +3,7 @@ title: MySQL 事务异常读：脏读、不可重复读与幻读
 published: 2026-09-24
 description: 区分三种并发读问题，理解行内容变化与结果集变化的差别，以及 MVCC 和间隙锁各自解决什么问题。
 tags: [MySQL, 事务, 锁]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

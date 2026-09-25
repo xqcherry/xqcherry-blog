@@ -3,7 +3,7 @@ title: 消息队列的三个核心价值：解耦、异步与削峰
 published: 2026-09-24
 description: 通过服务依赖、请求延迟和突发流量三个场景，直观理解消息队列为什么能改善系统架构。
 tags: [消息队列]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

@@ -3,7 +3,7 @@ title: RocketMQ 为什么使用 NameServer，而不是直接依赖 ZooKeeper
 published: 2026-09-24
 description: 从路由一致性、写入扩展性和运维复杂度三个角度，理解 RocketMQ 自研 NameServer 的设计取舍。
 tags: [消息队列]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

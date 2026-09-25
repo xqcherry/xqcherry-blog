@@ -3,7 +3,7 @@ title: InnoDB 聚簇索引与二级索引：什么是回表
 published: 2026-09-24
 description: 通过叶子节点存储内容、回表过程和主键设计，理解 InnoDB 聚簇索引与非聚簇索引的核心区别。
 tags: [MySQL, 索引]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

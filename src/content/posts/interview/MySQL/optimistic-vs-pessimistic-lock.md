@@ -3,7 +3,7 @@ title: MySQL 乐观锁与悲观锁：冲突少时重试，冲突多时排队
 published: 2026-09-24
 description: 对比两种并发控制思想，说明 version 乐观锁、FOR UPDATE 悲观锁以及不同业务场景的选型。
 tags: [MySQL, 锁, 事务]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 

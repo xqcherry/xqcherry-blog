@@ -3,7 +3,7 @@ title: MySQL InnoDB 锁的分类：行锁、表锁与意向锁
 published: 2026-09-24
 description: 从锁粒度和锁模式两个维度梳理 InnoDB 的锁，理解记录锁、间隙锁、临键锁、MDL 与意向锁的作用。
 tags: [MySQL, 锁]
-category: 后端基础
+category: 后端八股
 draft: false
 ---
 
