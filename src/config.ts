@@ -45,6 +45,11 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Home,
 		LinkPreset.Archive,
 		{
+			name: "项目",
+			url: "/projects/",
+			icon: "material-symbols:rocket-launch-outline-rounded",
+		},
+		{
 			name: "留言板",
 			url: "/guestbook/",
 			icon: "material-symbols:chat-bubble-outline-rounded",

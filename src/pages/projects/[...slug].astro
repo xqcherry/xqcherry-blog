@@ -1,0 +1,36 @@
+---
+// Adapted from Firefly's project detail page (MIT License).
+import path from "node:path";
+import { Icon } from "astro-icon/components";
+import ImageWrapper from "@components/misc/ImageWrapper.astro";
+import Markdown from "@components/misc/Markdown.astro";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { getSortedProjects } from "@utils/content-utils";
+import { formatDateToYYYYMMDD } from "@utils/date-utils";
+import { getProjectStatusMeta, resolveLinkIcon } from "@utils/projects-utils";
+import { getDir, url } from "@utils/url-utils";
+
+export async function getStaticPaths() {
+	const projects = await getSortedProjects();
+	return projects.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
+const status = getProjectStatusMeta(entry.data.status);
+---
+
+<MainGridLayout title={entry.data.title} description={entry.data.description || entry.data.title} lang={entry.data.lang || undefined} setOGTypeArticle={true} headings={headings}>
+	<article class="card-base relative mb-4 w-full overflow-hidden rounded-[var(--radius-large)] px-6 pb-7 pt-6 md:px-9">
+		<a href={url("/projects/")} class="mb-5 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--primary)] hover:underline"><Icon name="material-symbols:arrow-back-rounded" class="text-base" />返回项目列表</a>
+		<header class="mb-7">
+			<div class="flex flex-wrap items-center gap-3"><h1 class="text-3xl font-bold leading-tight text-90 md:text-[2.25rem]">{entry.data.title}</h1>{status && <span class:list={["inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium", status.className]}>{status.icon && <Icon name={status.icon} />}{status.label}</span>}</div>
+			<div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-50"><time datetime={entry.data.published.toISOString()}><Icon name="material-symbols:calendar-today-outline-rounded" class="mr-1 inline text-base" />{formatDateToYYYYMMDD(entry.data.published)}</time>{entry.data.tags.length > 0 && <span><Icon name="material-symbols:tag-rounded" class="mr-1 inline text-base" />{entry.data.tags.join(" / ")}</span>}</div>
+			{entry.data.description && <p class="mt-3 max-w-3xl leading-relaxed text-75">{entry.data.description}</p>}
+			{entry.data.link.length > 0 && <div class="mt-4 flex flex-wrap gap-2.5">{entry.data.link.map((item, index) => { const icon = resolveLinkIcon(item.icon, item.label); return <a href={item.value} target="_blank" rel="noopener noreferrer" class:list={["inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition", index === 0 ? "bg-[var(--primary)] text-white hover:opacity-85 dark:text-black/70" : "border border-[var(--primary)]/40 text-[var(--primary)] hover:bg-[var(--btn-plain-bg-hover)]"]}>{icon.kind === "icon" && <Icon name={icon.value} />}{icon.kind === "image" && <img src={icon.value} alt="" class="h-4 w-4 object-contain" loading="lazy" />}{icon.kind === "letter" && <span class="font-bold">{icon.value}</span>}{item.label}</a>; })}</div>}
+		</header>
+		{entry.data.image && <ImageWrapper id="project-cover" src={entry.data.image} basePath={path.join("content/projects/", getDir(entry.id))} alt={entry.data.title} class="mb-8 overflow-hidden rounded-xl" />}
+		<Markdown class="markdown-content"><Content /></Markdown>
+		<footer class="mt-8 border-t border-dashed border-[var(--line-divider)] pt-5 text-center text-sm text-50">项目模块参考并复用自 <a class="font-medium text-[var(--primary)] hover:underline" href="https://github.com/CuteLeaf/Firefly" target="_blank" rel="noopener noreferrer">Firefly</a>（MIT License）</footer>
+	</article>
+</MainGridLayout>

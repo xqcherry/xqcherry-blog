@@ -1,0 +1,51 @@
+---
+// Adapted from Firefly's projects page (MIT License).
+import { Icon } from "astro-icon/components";
+import ProjectCard from "@components/project/ProjectCard.astro";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { getSortedProjects } from "@utils/content-utils";
+import { projectStatusKeys, getProjectStatusMeta } from "@utils/projects-utils";
+
+const projects = await getSortedProjects();
+const statusFilters = projectStatusKeys.map((key) => ({ key, ...getProjectStatusMeta(key)! }));
+---
+
+<MainGridLayout title="项目" description="记录正在构建与已经完成的作品">
+	<section class="w-full">
+		<header class="card-base mb-4 grid gap-5 px-6 py-6 md:grid-cols-[1fr_auto] md:px-9">
+			<div class="flex items-center gap-4">
+				<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-[var(--radius-large)] bg-[var(--primary)] text-3xl text-white dark:text-black/70"><Icon name="material-symbols:rocket-launch-outline-rounded" /></div>
+				<div><h1 class="text-2xl font-bold text-90">项目</h1><p class="mt-1 text-sm text-50">记录正在构建与已经完成的作品</p></div>
+			</div>
+			<div class="self-center text-right text-sm text-50"><strong class="mr-1 text-2xl text-[var(--primary)]">{projects.length}</strong> 个项目</div>
+			{projects.length > 0 && <project-filter class="md:col-span-2">
+				<label class="relative block"><Icon name="material-symbols:search-rounded" class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-lg text-50" /><input data-search type="search" placeholder="搜索项目、描述或标签" class="w-full rounded-xl border border-[var(--line-divider)] bg-transparent py-2 pl-10 pr-4 text-sm outline-none transition focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]" /></label>
+				<div class="mt-3 flex flex-wrap gap-2"><button data-status="all" data-active class="rounded-full px-3 py-1.5 text-sm font-medium transition">全部</button>{statusFilters.map((status) => <button data-status={status.key} class="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-medium transition"><Icon name={status.icon} class="text-base" />{status.label}</button>)}</div>
+			</project-filter>}
+		</header>
+
+		{projects.length > 0 ? <>
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-2">{projects.map((project) => <ProjectCard slug={project.slug} id={project.id} {...project.data} />)}</div>
+			<div class="projects-empty hidden card-base mt-4 flex-col items-center justify-center py-12 text-50"><Icon name="material-symbols:search-off-rounded" class="mb-3 text-4xl" /><p>没有匹配的项目</p></div>
+		</> : <div class="card-base flex flex-col items-center justify-center px-6 py-16 text-center"><Icon name="material-symbols:rocket-launch-outline-rounded" class="mb-4 text-6xl text-[var(--primary)] opacity-60" /><h2 class="text-xl font-bold text-90">项目正在整理中</h2><p class="mt-2 text-sm text-50">在 <code>src/content/projects/</code> 新增 Markdown 文件后，它会自动显示在这里。</p></div>}
+	</section>
+
+	<script is:inline>
+		if (!customElements.get("project-filter")) {
+			class ProjectFilter extends HTMLElement {
+				selectedStatus = "all";
+				connectedCallback() { this.addEventListener("click", this.handleClick); this.addEventListener("input", this.applyFilters); }
+				disconnectedCallback() { this.removeEventListener("click", this.handleClick); this.removeEventListener("input", this.applyFilters); }
+				handleClick = (event) => { const button = event.target.closest("button"); if (!button) return; this.selectedStatus = button.dataset.status; this.querySelectorAll("button").forEach((item) => item.removeAttribute("data-active")); button.setAttribute("data-active", ""); this.applyFilters(); };
+				applyFilters = () => { const container = this.closest("section"); const query = (this.querySelector("[data-search]")?.value || "").toLowerCase().trim(); const cards = container?.querySelectorAll(".project-card") || []; let visible = false; cards.forEach((card) => { const text = card.textContent?.toLowerCase() || ""; const tags = card.dataset.tags?.toLowerCase() || ""; const matches = (this.selectedStatus === "all" || card.dataset.status === this.selectedStatus) && (!query || text.includes(query) || tags.includes(query)); card.style.display = matches ? "" : "none"; visible ||= matches; }); const empty = container?.querySelector(".projects-empty"); empty?.classList.toggle("hidden", visible); empty?.classList.toggle("flex", !visible); };
+			}
+			customElements.define("project-filter", ProjectFilter);
+		}
+	</script>
+</MainGridLayout>
+
+<style>
+	project-filter button { background: var(--btn-plain-bg-hover); color: var(--content-meta); }
+	project-filter button[data-active], project-filter button:hover { background: var(--primary); color: white; }
+	:global(.dark) project-filter button[data-active], :global(.dark) project-filter button:hover { color: rgb(0 0 0 / 0.7); }
+</style>

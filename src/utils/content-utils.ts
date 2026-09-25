@@ -93,6 +93,26 @@ export async function getSiteStats(startedAt: Date): Promise<SiteStats> {
 	};
 }
 
+/** Adapted from Firefly's project sorting logic (MIT License). */
+export async function getSortedProjects(): Promise<
+	CollectionEntry<"projects">[]
+> {
+	const projects = await getCollection("projects", ({ data }) => {
+		return import.meta.env.PROD ? data.draft !== true : true;
+	});
+
+	return projects.sort((a, b) => {
+		const aOrder = a.data.order;
+		const bOrder = b.data.order;
+		if (aOrder !== undefined && bOrder !== undefined && aOrder !== bOrder) {
+			return aOrder - bOrder;
+		}
+		if (aOrder !== undefined && bOrder === undefined) return -1;
+		if (aOrder === undefined && bOrder !== undefined) return 1;
+		return b.data.published.getTime() - a.data.published.getTime() || a.data.title.localeCompare(b.data.title);
+	});
+}
+
 export async function getTagList(): Promise<Tag[]> {
 	const allBlogPosts = await getCollection<"posts">("posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
