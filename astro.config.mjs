@@ -66,6 +66,9 @@ export default defineConfig({
 			defaultProps: {
 				wrap: true,
 				overridesByLang: {
+					cpp: {
+						frame: "terminal",
+					},
 					'shellsession': {
 						showLineNumbers: false,
 					},
@@ -81,13 +84,15 @@ export default defineConfig({
 				frames: {
 					editorBackground: "var(--codeblock-bg)",
 					terminalBackground: "var(--codeblock-bg)",
-					terminalTitlebarBackground: "var(--codeblock-topbar-bg)",
+					terminalTitlebarBackground: "oklch(0.23 0.02 var(--hue))",
+					terminalTitlebarDotsForeground: "oklch(0.82 0.02 var(--hue))",
+					terminalTitlebarDotsOpacity: "0.6",
 					editorTabBarBackground: "var(--codeblock-topbar-bg)",
 					editorActiveTabBackground: "none",
 					editorActiveTabIndicatorBottomColor: "var(--primary)",
 					editorActiveTabIndicatorTopColor: "none",
 					editorTabBarBorderBottomColor: "var(--codeblock-topbar-bg)",
-					terminalTitlebarBorderBottomColor: "none"
+					terminalTitlebarBorderBottomColor: "oklch(0.3 0.02 var(--hue))"
 				},
 				textMarkers: {
 					delHue: 0,

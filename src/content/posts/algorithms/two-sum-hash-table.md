@@ -17,7 +17,7 @@ draft: false
 这份实现采用“先建表、后查询”的两次遍历；`m[k] != i` 用于排除同一个元素被重复使用的情况。
 :::
 
-```
+```cpp
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {

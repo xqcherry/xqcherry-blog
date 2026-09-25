@@ -9,7 +9,7 @@ draft: false
 
 二分图的顶点可以分成两个集合，任意边只连接不同集合。把两个集合抽象为 `0` 与 `1` 两种颜色，就得到 DFS/BFS 染色问题。
 
-```
+```cpp
 class Solution {
 public:
 

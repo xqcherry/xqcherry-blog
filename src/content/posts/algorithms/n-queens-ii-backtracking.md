@@ -13,7 +13,7 @@ draft: false
 
 由于按行递归，当前行之下尚未放置皇后。检查位置 `(r, c)` 时，只需向上检查同列、左上对角线和右上对角线。
 
-```
+```cpp
 #include<bits/stdc++.h>
 using namespace std;
 

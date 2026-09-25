@@ -13,7 +13,7 @@ draft: false
 
 排序后枚举 `i`。在区间 `[i + 1, n - 1]` 中维护 `left`、`right`：和太小就右移 `left`，和太大就左移 `right`，恰好为零时记录答案并跳过重复值。
 
-```
+```cpp
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {

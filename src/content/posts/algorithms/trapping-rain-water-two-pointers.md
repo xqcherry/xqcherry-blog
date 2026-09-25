@@ -13,7 +13,7 @@ draft: false
 
 使用 `left`、`right` 从两端收缩，分别维护 `leftMax` 和 `rightMax`。若 `leftMax <= rightMax`，当前位置左侧的上界已经确定，右侧必然至少有 `rightMax`，所以可以立即结算 `left`；反之处理 `right`。
 
-```
+```cpp
 class Solution {
 public:
     int trap(vector<int>& height) {

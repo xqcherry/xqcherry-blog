@@ -13,7 +13,7 @@ draft: false
 
 以下是原始的区间枚举版本：
 
-```
+```cpp
 class Solution {
 public:
     bool canReach(string s, int minJump, int maxJump) {
@@ -39,7 +39,7 @@ public:
 
 ## 滑动窗口优化
 
-```
+```cpp
 class Solution {
 public:
     bool canReach(string s, int minJump, int maxJump) {

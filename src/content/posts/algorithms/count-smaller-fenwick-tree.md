@@ -9,7 +9,7 @@ draft: false
 
 处理 `nums[i]` 时，右侧元素已经加入数据结构；问题变成查询“已加入元素中有多少值小于 `nums[i]`”。值域可能很大或包含负数，所以先离散化为连续排名。
 
-```
+```cpp
 #include<bits/stdc++.h>
 using namespace std;
 

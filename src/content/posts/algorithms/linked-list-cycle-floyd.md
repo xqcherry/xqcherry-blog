@@ -9,7 +9,7 @@ draft: false
 
 遍历链表时，把每个访问过的节点地址加入集合。若当前节点已存在于集合中，说明沿 `next` 指针回到了此前位置，链表存在环。
 
-```
+```cpp
 /**
  * Definition for singly-linked list.
  * struct ListNode {

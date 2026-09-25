@@ -9,7 +9,7 @@ draft: false
 
 题目要求列出从节点 `0` 到节点 `n - 1` 的全部路径。图是 DAG，因此沿边递归不会遇到环；每次递归只需维护一条当前路径。
 
-```
+```cpp
 class Solution {
 public:
     vector<vector<int>> g, res;

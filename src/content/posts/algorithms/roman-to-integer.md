@@ -9,7 +9,7 @@ draft: false
 
 罗马数字通常从左到右累加；`IV`、`IX`、`XL`、`XC`、`CD`、`CM` 是需要整体处理的减法组合。代码用一个单字符映射和一个双字符映射分别处理它们。
 
-```
+```cpp
 class Solution {
 public:
     int romanToInt(string s) {

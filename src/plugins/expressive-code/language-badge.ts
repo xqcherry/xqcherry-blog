@@ -26,7 +26,10 @@ export function pluginLanguageBadge() {
         transition: opacity 0.3s;
         opacity: 0;
       }
-      .frame:not(.has-title):not(.is-terminal) {
+      [data-language="cpp"]::before {
+        content: "C++";
+      }
+      .frame:not(.has-title) {
         @media (hover: none) {
           & [data-language]::before {
             opacity: 1;
