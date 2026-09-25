@@ -7,7 +7,7 @@ import { commentConfig } from "src/config";
 
 <MainGridLayout title="留言板" description="留下想说的话">
 	<StaticPageCard title="留言板" description="欢迎留下想说的话。">
-		<p class="rounded-xl border border-dashed border-[var(--line-divider)] bg-black/[0.015] px-5 py-4 text-sm leading-6 text-50 dark:bg-white/[0.025]">这里是独立留言区，欢迎分享想法、建议或来访足迹。</p>
+		<p class="rounded-xl border border-dashed border-[var(--line-divider)] bg-black/[0.015] px-5 py-4 text-sm leading-6 text-50 dark:bg-white/[0.025]">欢迎在这里留下你的足迹，分享你的想法和建议。</p>
 		{commentConfig.enable && commentConfig.serverURL.trim() && commentConfig.siteName.trim() && <Comments />}
 	</StaticPageCard>
 </MainGridLayout>
