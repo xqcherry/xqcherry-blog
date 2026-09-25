@@ -1,21 +1,26 @@
 ---
-import "@waline/client/style";
+import "artalk/Artalk.css";
 import { commentConfig } from "../../config";
 
 const serverURL = commentConfig.serverURL.trim();
+const siteName = commentConfig.siteName.trim();
 ---
 
-<section class="waline-container mt-2 border-t border-dashed border-[var(--line-divider)] pt-6 onload-animation" aria-label="评论区">
-    <div id="waline-comments" data-server-url={serverURL}></div>
+<section class="artalk-container mt-2 border-t border-dashed border-[var(--line-divider)] pt-6 onload-animation" aria-label="评论区">
+    <div id="artalk-comments" data-server-url={serverURL} data-site-name={siteName}></div>
 </section>
 
 <script>
 function createController() {
-    const controller: NonNullable<Window["walineComments"]> = {
+    const controller: NonNullable<Window["artalkComments"]> = {
         instance: null,
         observer: null,
+        themeObserver: null,
         target: null,
         hooksRegistered: false,
+        syncTheme() {
+            controller.instance?.setDarkMode(document.documentElement.classList.contains("dark"));
+        },
         destroy() {
             controller.observer?.disconnect();
             controller.instance?.destroy();
@@ -24,7 +29,12 @@ function createController() {
             controller.target = null;
         },
         init() {
-            const container = document.getElementById("waline-comments");
+            if (!controller.themeObserver) {
+                controller.themeObserver = new MutationObserver(controller.syncTheme);
+                controller.themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+            }
+
+            const container = document.getElementById("artalk-comments");
 
             if (!container) {
                 controller.destroy();
@@ -35,23 +45,22 @@ function createController() {
 
             controller.destroy();
             const serverURL = container.dataset.serverUrl?.trim();
-            if (!serverURL) return;
+            const siteName = container.dataset.siteName?.trim();
+            if (!serverURL || !siteName) return;
             controller.target = container;
 
             const mount = async () => {
-                const { init } = await import("@waline/client");
+                const { default: Artalk } = await import("artalk");
                 if (controller.target !== container || !container.isConnected) return;
 
-                controller.instance = init({
+                controller.instance = Artalk.init({
                     el: container,
-                    serverURL,
-                    path: window.location.pathname,
-                    lang: "zh-CN",
-                    dark: "html.dark",
-                    meta: ["nick", "mail"],
-                    requiredMeta: ["nick", "mail"],
-                    comment: true,
-                    pageview: false,
+                    server: serverURL,
+                    site: siteName,
+                    pageKey: window.location.pathname,
+                    pageTitle: document.title,
+                    darkMode: document.documentElement.classList.contains("dark"),
+                    locale: "zh-CN",
                 });
             };
 
@@ -74,8 +83,8 @@ function createController() {
     return controller;
 }
 
-const controller = window.walineComments ?? createController();
-window.walineComments = controller;
+const controller = window.artalkComments ?? createController();
+window.artalkComments = controller;
 controller.init();
 
 const registerHooks = () => {
@@ -94,7 +103,7 @@ if (window.swup?.hooks) {
 </script>
 
 <style>
-.waline-container :global(.wl-panel) {
+.artalk-container :global(.atk-main) {
     margin: 0;
 }
 </style>

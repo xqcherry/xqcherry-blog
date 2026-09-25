@@ -83,6 +83,7 @@ export type LicenseConfig = {
 export type CommentConfig = {
 	enable: boolean;
 	serverURL: string;
+	siteName: string;
 };
 
 export type SponsorEntry = {

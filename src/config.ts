@@ -88,7 +88,8 @@ export const licenseConfig: LicenseConfig = {
 
 export const commentConfig: CommentConfig = {
 	enable: true,
-	serverURL: "https://waline.xqcherry.top",
+	serverURL: "https://artalk.xqcherry.top",
+	siteName: "xqcherry站点",
 };
 
 export const sponsorConfig: SponsorConfig = {

@@ -1,5 +1,5 @@
 import type { AstroIntegration } from "@swup/astro";
-import type { WalineInstance } from "@waline/client";
+import type Artalk from "artalk";
 
 declare global {
 	interface Window {
@@ -12,13 +12,15 @@ declare global {
 				}>;
 			}>;
 		};
-		walineComments?: {
-			instance: WalineInstance | null;
+		artalkComments?: {
+			instance: Artalk | null;
 			observer: IntersectionObserver | null;
+			themeObserver: MutationObserver | null;
 			target: HTMLElement | null;
 			hooksRegistered: boolean;
 			init: () => void;
 			destroy: () => void;
+			syncTheme: () => void;
 		};
 	}
 }

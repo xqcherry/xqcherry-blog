@@ -1,0 +1,18 @@
+services:
+  artalk:
+    image: artalk/artalk-go:2.10.0
+    container_name: artalk
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+      ATK_LOCALE: zh-CN
+      ATK_SITE_DEFAULT: xqcherry站点
+      ATK_SITE_URL: https://blog.xqcherry.top
+    volumes:
+      - ./data:/data
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
