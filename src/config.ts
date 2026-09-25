@@ -98,7 +98,7 @@ export const commentConfig: CommentConfig = {
 };
 
 export const sponsorConfig: SponsorConfig = {
-	qrCode: "/sponsor/placeholder.svg",
+	qrCode: "/sponsor/wechat-reward.png",
 	entries: [],
 };
 
