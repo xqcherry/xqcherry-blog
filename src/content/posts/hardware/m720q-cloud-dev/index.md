@@ -1,10 +1,9 @@
 ---
-title: NEC M720q 折腾记录：把迷你主机改造成云开发与家庭服务器
+title: NEC8 折腾记录：把迷你主机改造成云开发与家庭服务器
 published: 2026-09-23
 description: 从海鲜市场入手一台 NEC 8 代迷你主机，记录它作为云开发主机、软路由与家庭服务器的硬件选型和扩展思路。
-image: "./1.jpg"
-tags: [迷你主机, M720q, 家庭服务器, PVE]
-category: 硬件折腾
+tags: [迷你主机]
+category: 生活
 draft: false
 ---
 
@@ -50,14 +49,14 @@ draft: false
 
 ## 到货实物
 
-以下是一些到货实物图，成色都挺不错的。这里将 1～5 号图片按两列排版：
+以下是一些到货实物图，成色都挺不错的：
 
 <div class="grid grid-cols-2 gap-4">
-  <img src="./1.jpg" alt="NEC M720q 到货实物图 1" loading="lazy" />
-  <img src="./2.jpg" alt="NEC M720q 到货实物图 2" loading="lazy" />
-  <img src="./3.jpg" alt="NEC M720q 到货实物图 3" loading="lazy" />
-  <img src="./4.jpg" alt="NEC M720q 到货实物图 4" loading="lazy" />
-  <img src="./5.jpg" alt="NEC M720q 到货实物图 5" loading="lazy" />
+  <img src="/images/hardware/m720q-cloud-dev/1.jpg" alt="NEC M720q 到货实物图 1" loading="lazy" />
+  <img src="/images/hardware/m720q-cloud-dev/2.jpg" alt="NEC M720q 到货实物图 2" loading="lazy" />
+  <img src="/images/hardware/m720q-cloud-dev/3.jpg" alt="NEC M720q 到货实物图 3" loading="lazy" />
+  <img src="/images/hardware/m720q-cloud-dev/4.jpg" alt="NEC M720q 到货实物图 4" loading="lazy" />
+  <img src="/images/hardware/m720q-cloud-dev/5.jpg" alt="NEC M720q 到货实物图 5" loading="lazy" />
 </div>
 
 ## 机器结构与扩展能力
@@ -69,8 +68,8 @@ NEC 8 是联想 M720q 的日本版本，原生支持第 8～9 代 CPU。主机�
 两张结构图如下：
 
 <div class="grid grid-cols-2 gap-4">
-  <img src="./cb4cb4f36b18c8aefdfdb2d7760eddac.jpg" alt="NEC M720q 内部结构图" loading="lazy" />
-  <img src="./7dc018f9b46de0bfa5b25dbbc45da812.jpg" alt="NEC M720q 扩展位置图" loading="lazy" />
+  <img src="/images/hardware/m720q-cloud-dev/cb4cb4f36b18c8aefdfdb2d7760eddac.jpg" alt="NEC M720q 内部结构图" loading="lazy" />
+  <img src="/images/hardware/m720q-cloud-dev/7dc018f9b46de0bfa5b25dbbc45da812.jpg" alt="NEC M720q 扩展位置图" loading="lazy" />
 </div>
 
 ## PCIe 扩展方案
@@ -78,20 +77,15 @@ NEC 8 是联想 M720q 的日本版本，原生支持第 8～9 代 CPU。主机�
 目前几个主流方案：
 
 - PCIe x8 插槽可以拓展万兆网卡；
-- 通过魔改 BIOS 里的拆分选项，把原生的 PCIe 插槽拓展出 4 个 PCIe 3.0 x1 的盘位出来，同时额外增加一个 PCIe 3.0 x8；
-- 使用拆分卡扩展多块硬盘，适合后续把它改造成 NAS 或家庭服务器。
+- 通过魔改 BIOS 里的拆分选项，把原生的 PCIe 插槽拓展出 4 个 PCIe 3.0 x1 的盘位出来，同时额外增加一个 PCIe 3.0 x8，使用拆分卡扩展多块硬盘，适合后续把它改造成 NAS 或家庭服务器。
 
 听说拆分卡比较贵，我也没有具体了解，后续如果有需求的话再说。现阶段还是先把它作为开发主机运行起来，再根据实际需求决定是否增加万兆网卡、硬盘扩展卡或其他设备。
 
-![PCIe 扩展卡](./1.png)
+![PCIe 扩展卡](/images/hardware/m720q-cloud-dev/1.png)
 
 ## 后续计划
 
-这台机器目前还没有补齐固态硬盘，接下来希望早日买到合适的硬盘和内存，补完主机最后的形态 T...T
-
-下一步会先把基础硬件补齐，再安装 PVE，逐步验证 Ubuntu Desktop、OpenWrt 以及其他服务的运行方式。
-
-希望早日买到合适的硬盘和内存，把这台小主机补完，看看它最终能否稳定承担开发、软路由和家庭服务器这几个角色。
+这台机器目前还没有补齐固态硬盘，接下来希望早日买到合适的硬盘和内存，补完主机最后的形态ヽ(ﾟ´Д`)ﾉﾟ
 
 ## 参考资料
 
