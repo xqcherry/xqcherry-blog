@@ -31,6 +31,5 @@ const status = getProjectStatusMeta(entry.data.status);
 		</header>
 		{entry.data.image && <ImageWrapper id="project-cover" src={entry.data.image} basePath={path.join("content/projects/", getDir(entry.id))} alt={entry.data.title} class="mb-8 overflow-hidden rounded-xl" />}
 		<Markdown class="markdown-content"><Content /></Markdown>
-		<footer class="mt-8 border-t border-dashed border-[var(--line-divider)] pt-5 text-center text-sm text-50">项目模块参考并复用自 <a class="font-medium text-[var(--primary)] hover:underline" href="https://github.com/CuteLeaf/Firefly" target="_blank" rel="noopener noreferrer">Firefly</a>（MIT License）</footer>
 	</article>
 </MainGridLayout>
