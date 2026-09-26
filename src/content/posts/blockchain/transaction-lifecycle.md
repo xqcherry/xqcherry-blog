@@ -2,7 +2,7 @@
 title: 一笔交易是如何上链的：从钱包签名到区块确认
 published: 2026-09-26
 description: 以 Bitcoin 和 Ethereum 为例，拆解交易创建、签名、广播、节点验证、交易池、出块、共识确认与最终确定的完整流程。
-tags: [区块链, 交易, 数字签名, 共识, Bitcoin, Ethereum]
+tags: [区块链, Bitcoin]
 category: 区块链
 draft: false
 ---

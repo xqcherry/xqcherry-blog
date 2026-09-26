@@ -33,10 +33,8 @@ export const siteConfig: SiteConfig = {
 		depth: 2, // Maximum heading depth to show in the table, from 1 to 3
 	},
 	favicon: [
-		{ src: "/favicon/favicon-light-32.png", theme: "light", sizes: "32x32" },
-		{ src: "/favicon/favicon-light-192.png", theme: "light", sizes: "192x192" },
-		{ src: "/favicon/favicon-dark-32.png", theme: "dark", sizes: "32x32" },
-		{ src: "/favicon/favicon-dark-192.png", theme: "dark", sizes: "192x192" },
+		{ src: "/favicon/favicon-avocado-light.svg", theme: "light", sizes: "192x192" },
+		{ src: "/favicon/favicon-avocado-dark.svg", theme: "dark", sizes: "192x192" },
 	],
 };
 
