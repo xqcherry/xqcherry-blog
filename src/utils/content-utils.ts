@@ -3,6 +3,10 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
 
+// These categories remain available in the archive and post pages, but are
+// intentionally omitted from the homepage feed.
+export const HOME_EXCLUDED_CATEGORIES = new Set(["后端八股", "算法题解", "AI 工程"]);
+
 // // Retrieve posts and sort them by publication date
 async function getRawSortedPosts() {
 	const allBlogPosts = await getCollection("posts", ({ data }) => {
@@ -31,6 +35,12 @@ export async function getSortedPosts() {
 
 	return sorted;
 }
+
+export async function getHomepagePosts() {
+	const posts = await getSortedPosts();
+	return posts.filter((post) => !HOME_EXCLUDED_CATEGORIES.has(post.data.category?.trim() ?? ""));
+}
+
 export type PostForList = {
 	slug: string;
 	data: CollectionEntry<"posts">["data"];
