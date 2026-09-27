@@ -41,7 +41,17 @@ export const siteConfig: SiteConfig = {
 export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
-		LinkPreset.Archive,
+		{
+			name: "文章",
+			url: "/archive/",
+			icon: "material-symbols:article-outline-rounded",
+			children: [
+				{ name: "归档", url: "/archive/", icon: "material-symbols:archive-outline-rounded" },
+				{ name: "系列", url: "/series/", icon: "material-symbols:layers" },
+				{ name: "分类", url: "/categories/", icon: "material-symbols:category-outline-rounded" },
+				{ name: "标签", url: "/tags/", icon: "material-symbols:tag-rounded" },
+			],
+		},
 		{
 			name: "项目",
 			url: "/projects/",

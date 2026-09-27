@@ -6,7 +6,7 @@ import Markdown from "@components/misc/Markdown.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { getSortedPosts } from "@utils/content-utils";
+import { getSeriesPosts, getSortedPosts } from "@utils/content-utils";
 import { getDir, getPostUrlBySlug } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
 import { commentConfig, licenseConfig } from "src/config";
@@ -14,6 +14,7 @@ import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import PostMetadata from "../../components/PostMeta.astro";
 import { profileConfig, siteConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
+import SeriesNav from "../../components/SeriesNav.astro";
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
@@ -27,6 +28,7 @@ const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
 const { remarkPluginFrontmatter } = await entry.render();
+const seriesData = await getSeriesPosts(entry);
 
 const jsonLd = {
 	"@context": "https://schema.org",
@@ -95,6 +97,8 @@ const jsonLd = {
                 ></PostMetadata>
                 {!entry.data.image && <div class="border-[var(--line-divider)] border-dashed border-b-[1px] mb-5"></div>}
             </div>
+
+            {seriesData && <SeriesNav seriesName={seriesData.seriesName} posts={seriesData.posts} currentPostId={entry.slug} />}
 
             <!-- always show cover as long as it has one -->
 

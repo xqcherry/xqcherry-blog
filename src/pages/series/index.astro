@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { getSeriesList } from "@utils/content-utils";
+import { getPostUrlBySlug } from "@utils/url-utils";
+const seriesList = await getSeriesList();
+const totalPosts = seriesList.reduce((total, series) => total + series.count, 0);
+---
+
+<MainGridLayout title="系列" description="按主题整理的连续文章">
+    <div class="card-base mb-4 px-6 py-5 md:px-8">
+        <div class="mb-1 text-2xl font-bold text-[var(--primary)]">系列</div>
+        <p class="text-sm text-50">按主题整理的连续文章 · {totalPosts} 篇文章</p>
+    </div>
+    {seriesList.length > 0 ? <div class="grid items-start gap-4 md:grid-cols-2">
+        {seriesList.map((series) => <div class="series-card card-base overflow-hidden">
+            <button type="button" aria-expanded="false" class="series-card-toggle group flex w-full cursor-pointer items-center gap-3 p-5 text-left transition hover:bg-[var(--btn-plain-bg-hover)]">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--primary)]/10 text-[var(--primary)] transition group-hover:bg-[var(--primary)]/20"><Icon name="material-symbols:layers" class="text-2xl" aria-hidden="true" /></span>
+                <span class="min-w-0 flex-1"><span class="block truncate text-lg font-bold text-90 group-hover:text-[var(--primary)]">{series.name}</span><span class="text-sm text-30">{series.count} 篇文章</span></span>
+                <Icon name="material-symbols:keyboard-arrow-down-rounded" class="series-card-arrow text-xl text-30 transition-transform duration-300" aria-hidden="true" />
+            </button>
+            <div class="series-card-content max-h-0 overflow-hidden opacity-0 transition-[max-height,opacity] duration-300">
+                <ol class="flex flex-col px-5 pb-4">
+                    {series.posts.map((post, index) => <li><a href={getPostUrlBySlug(post.slug)} class="group flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-black/5 dark:hover:bg-white/5"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[var(--enter-btn-bg)] text-sm font-bold text-[var(--primary)]">{index + 1}</span><span class="min-w-0 flex-1 truncate text-sm font-bold text-black/75 dark:text-white/75 group-hover:text-[var(--primary)]">{post.data.title}</span><Icon name="material-symbols:chevron-right-rounded" class="text-xl text-black/20 group-hover:text-[var(--primary)]" aria-hidden="true" /></a></li>)}
+                </ol>
+            </div>
+        </div>)}
+    </div> : <div class="card-base px-6 py-12 text-center text-30">还没有系列文章。为文章添加 <code>series</code> 字段后，它们会显示在这里。</div>}
+</MainGridLayout>
+
+<script is:inline>
+if (!window.__seriesCardInit) {
+    window.__seriesCardInit = true;
+    document.addEventListener("click", (event) => {
+        const button = event.target?.closest?.(".series-card-toggle");
+        if (!button) return;
+        const card = button.closest(".series-card");
+        const content = card?.querySelector(".series-card-content");
+        if (!content) return;
+        const open = button.getAttribute("aria-expanded") === "true";
+        document.querySelectorAll(".series-card-toggle[aria-expanded='true']").forEach((other) => { if (other !== button) { other.setAttribute("aria-expanded", "false"); const otherContent = other.closest(".series-card")?.querySelector(".series-card-content"); if (otherContent) otherContent.setAttribute("style", "max-height:0;opacity:0"); } });
+        button.setAttribute("aria-expanded", String(!open));
+        content.setAttribute("style", `max-height:${open ? 0 : content.scrollHeight}px;opacity:${open ? 0 : 1}`);
+        card.querySelector(".series-card-arrow")?.classList.toggle("rotate-180", !open);
+    });
+}
+</script>

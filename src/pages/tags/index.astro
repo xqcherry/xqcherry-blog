@@ -1,0 +1,10 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { getTagList } from "@utils/content-utils";
+import { getTagUrl } from "@utils/url-utils";
+const tags = await getTagList();
+---
+<MainGridLayout title="标签" description="按标签浏览文章">
+    <div class="card-base mb-4 px-6 py-5 md:px-8"><div class="mb-1 text-2xl font-bold text-[var(--primary)]">标签</div><p class="text-sm text-50">用关键词筛选文章</p></div>
+    <div class="flex flex-wrap gap-3">{tags.map((tag) => <a href={getTagUrl(tag.name)} class="card-base group inline-flex items-center gap-2 px-4 py-3 transition hover:-translate-y-0.5 hover:text-[var(--primary)]"><span>#{tag.name}</span><span class="text-xs text-50 group-hover:text-[var(--primary)]">{tag.count}</span></a>)}</div>
+</MainGridLayout>

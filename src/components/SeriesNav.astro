@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+import type { PostForList } from "@utils/content-utils";
+import { getPostUrlBySlug } from "@utils/url-utils";
+
+interface Props { seriesName: string; posts: PostForList[]; currentPostId: string; }
+const { seriesName, posts, currentPostId } = Astro.props;
+---
+
+{posts.length > 0 && <div class="series-nav my-4 overflow-hidden rounded-xl border border-[var(--primary)]/25" data-pagefind-ignore>
+    <button type="button" aria-expanded="false" class="series-nav-toggle group flex w-full cursor-pointer select-none items-center gap-2 px-3 py-2 text-left transition hover:bg-[var(--btn-plain-bg-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--primary)]">
+        <Icon name="material-symbols:format-list-bulleted" class="shrink-0 text-lg text-[var(--primary)]" aria-hidden="true" />
+        <span class="font-bold text-black/80 dark:text-white/80 group-hover:text-[var(--primary)]">所属系列：{seriesName}</span>
+        <span class="ml-auto rounded-full bg-[var(--btn-regular-bg)] px-2 py-0.5 text-xs text-[var(--btn-content)]">{posts.length}</span>
+        <Icon name="material-symbols:keyboard-arrow-down-rounded" class="series-nav-arrow shrink-0 text-xl text-[var(--primary)] transition-transform duration-300" aria-hidden="true" />
+    </button>
+    <div class="series-nav-content max-h-0 overflow-hidden opacity-0 transition-[max-height,opacity] duration-300 ease-in-out">
+        <ol class="flex flex-col px-3 pb-2">
+            {posts.map((post, index) => {
+                const current = post.slug === currentPostId;
+                return <li class:list={["flex items-center gap-3 rounded-lg px-2 py-2", !current && "border-b border-dashed border-[var(--line-divider)]"]}>
+                    <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[var(--enter-btn-bg)] text-sm font-bold text-[var(--primary)]">{index + 1}</span>
+                    {current ? <span class="min-w-0 flex-1 truncate text-sm font-bold text-black/75 dark:text-white/75">{post.data.title}</span> : <a href={getPostUrlBySlug(post.slug)} class="min-w-0 flex-1 truncate text-sm font-bold text-black/75 transition hover:text-[var(--primary)]">{post.data.title}</a>}
+                    {current ? <span class="shrink-0 rounded-sm bg-[var(--enter-btn-bg)] px-1.5 py-0.5 text-xs text-[var(--primary)]" aria-current="page">本文</span> : <Icon name="material-symbols:chevron-right-rounded" class="shrink-0 text-xl text-black/20 dark:text-white/20" aria-hidden="true" />}
+                </li>;
+            })}
+        </ol>
+    </div>
+</div>}
+
+<script is:inline>
+if (!window.__seriesNavInit) {
+    window.__seriesNavInit = true;
+    document.addEventListener("click", (event) => {
+        const button = event.target?.closest?.(".series-nav-toggle");
+        if (!button) return;
+        const box = button.closest(".series-nav");
+        const content = box?.querySelector(".series-nav-content");
+        if (!content) return;
+        const open = button.getAttribute("aria-expanded") === "true";
+        button.setAttribute("aria-expanded", String(!open));
+        content.style.maxHeight = open ? "0px" : `${content.scrollHeight}px`;
+        content.style.opacity = open ? "0" : "1";
+        box.querySelector(".series-nav-arrow")?.classList.toggle("rotate-180", !open);
+    });
+}
+</script>

@@ -56,6 +56,47 @@ export async function getSortedPostsList(): Promise<PostForList[]> {
 
 	return sortedPostsList;
 }
+
+function sortBySeriesOrder(a: PostForList, b: PostForList): number {
+	const ao = a.data.seriesOrder;
+	const bo = b.data.seriesOrder;
+	if (ao !== undefined && bo !== undefined && ao !== bo) return ao - bo;
+	if (ao !== undefined && bo === undefined) return -1;
+	if (ao === undefined && bo !== undefined) return 1;
+	return b.data.published.getTime() - a.data.published.getTime() || a.data.title.localeCompare(b.data.title);
+}
+
+export type Series = { name: string; count: number; posts: PostForList[] };
+
+export async function getSeriesPosts(currentPost: CollectionEntry<"posts">): Promise<{
+	seriesName: string;
+	posts: PostForList[];
+	currentIndex: number;
+} | null> {
+	const seriesName = currentPost.data.series.trim();
+	if (!seriesName) return null;
+	const posts = (await getSortedPostsList()).filter((post) => post.data.series.trim() === seriesName);
+	posts.sort(sortBySeriesOrder);
+	return { seriesName, posts, currentIndex: posts.findIndex((post) => post.slug === currentPost.slug) };
+}
+
+export async function getSeriesList(): Promise<Series[]> {
+	const groups = new Map<string, PostForList[]>();
+	for (const post of await getSortedPostsList()) {
+		const name = post.data.series.trim();
+		if (!name) continue;
+		const posts = groups.get(name) ?? [];
+		posts.push(post);
+		groups.set(name, posts);
+	}
+	return [...groups.entries()]
+		.map(([name, posts]) => {
+			posts.sort(sortBySeriesOrder);
+			return { name, count: posts.length, posts };
+		})
+		.sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+}
+
 export type Tag = {
 	name: string;
 	count: number;

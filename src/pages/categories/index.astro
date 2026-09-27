@@ -1,0 +1,9 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { getCategoryList } from "@utils/content-utils";
+const categories = await getCategoryList();
+---
+<MainGridLayout title="分类" description="按分类浏览文章">
+    <div class="card-base mb-4 px-6 py-5 md:px-8"><div class="mb-1 text-2xl font-bold text-[var(--primary)]">分类</div><p class="text-sm text-50">按主题浏览全部文章</p></div>
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{categories.map((category) => <a href={category.url} class="card-base group flex items-center justify-between px-5 py-4 transition hover:-translate-y-0.5 hover:text-[var(--primary)]"><span class="font-bold">{category.name}</span><span class="rounded-full bg-[var(--enter-btn-bg)] px-2 py-0.5 text-xs text-50 group-hover:text-[var(--primary)]">{category.count}</span></a>)}</div>
+</MainGridLayout>
