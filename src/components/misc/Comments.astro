@@ -3,13 +3,19 @@ import "artalk/Artalk.css";
 import ownerAvatar from "@assets/images/avatar.jpg";
 import { commentConfig } from "../../config";
 
+interface Props {
+	customPath?: string;
+}
+
+const { customPath } = Astro.props;
+
 const serverURL = commentConfig.serverURL.trim();
 const siteName = commentConfig.siteName.trim();
 const ownerEmailHash = "bba2f241ba1b41bdaa1c3ac2ce55ce3e8591a89d32e9b1599ba7a9ed14a7a2a4";
 ---
 
 <section class="artalk-container mt-2 border-t border-dashed border-[var(--line-divider)] pt-6 onload-animation" aria-label="评论区">
-    <div id="artalk-comments" data-server-url={serverURL} data-site-name={siteName} data-owner-avatar={ownerAvatar.src} data-owner-email-hash={ownerEmailHash}></div>
+    <div id="artalk-comments" data-page-key={customPath || ""} data-server-url={serverURL} data-site-name={siteName} data-owner-avatar={ownerAvatar.src} data-owner-email-hash={ownerEmailHash}></div>
 </section>
 
 <script>
@@ -50,6 +56,7 @@ function createController() {
             const siteName = container.dataset.siteName?.trim();
             const ownerAvatar = container.dataset.ownerAvatar?.trim();
             const ownerEmailHash = container.dataset.ownerEmailHash?.trim();
+            const pageKey = container.dataset.pageKey?.trim();
             if (!serverURL || !siteName || !ownerAvatar || !ownerEmailHash) return;
             controller.target = container;
 
@@ -61,7 +68,7 @@ function createController() {
                     el: container,
                     server: serverURL,
                     site: siteName,
-                    pageKey: window.location.pathname,
+                    pageKey: pageKey || window.location.pathname,
                     pageTitle: document.title,
                     darkMode: document.documentElement.classList.contains("dark"),
                     locale: "zh-CN",

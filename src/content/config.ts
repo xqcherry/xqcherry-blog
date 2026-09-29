@@ -25,6 +25,18 @@ const specCollection = defineCollection({
 	schema: z.object({}),
 });
 
+const dynamicCollection = defineCollection({
+	schema: z.object({
+		published: z.date(),
+		pinned: z.boolean().optional().default(false),
+		location: z.string().optional().default(""),
+		gallery: z.array(z.object({
+			src: z.string(),
+			alt: z.string().optional().default(""),
+		})).optional().default([]),
+	}),
+});
+
 // Adapted from Firefly's project content model (MIT License).
 const projectsCollection = defineCollection({
 	schema: z.object({
@@ -48,5 +60,6 @@ const projectsCollection = defineCollection({
 export const collections = {
 	posts: postsCollection,
 	spec: specCollection,
+	dynamic: dynamicCollection,
 	projects: projectsCollection,
 };

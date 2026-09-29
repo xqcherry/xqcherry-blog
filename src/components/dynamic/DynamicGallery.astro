@@ -1,0 +1,20 @@
+---
+import { url } from "../../utils/url-utils";
+
+interface GalleryImage {
+	src: string;
+	alt?: string;
+}
+
+interface Props {
+	images: GalleryImage[];
+}
+
+const { images } = Astro.props;
+---
+
+{images.length > 0 && <div class:list={["dynamic-gallery", { "dynamic-gallery-single": images.length === 1 }]} aria-label="动态图片">
+	{images.map((image, index) => <a href={url(image.src)} class="dynamic-gallery-item" aria-label={`查看图片 ${index + 1}`}>
+		<img src={url(image.src)} alt={image.alt || `动态图片 ${index + 1}`} loading="lazy" decoding="async" />
+	</a>)}
+</div>}

@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { url } from "@utils/url-utils";
+import { dynamicAnchor, dynamicPlainText, sortDynamics } from "@utils/dynamic-utils";
+import WidgetLayout from "./WidgetLayout.astro";
+
+interface Props {
+	class?: string;
+	style?: string;
+}
+
+const { class: className, style } = Astro.props;
+const dynamics = sortDynamics(await getCollection("dynamic")).slice(0, 2);
+
+function formatDate(date: Date) {
+	return date.toLocaleString("zh-CN", {
+		year: "numeric",
+		month: "2-digit",
+		day: "2-digit",
+		hour: "2-digit",
+		minute: "2-digit",
+		second: "2-digit",
+	});
+}
+---
+
+<WidgetLayout name="最新动态" id="latest-dynamics" class={className} style={style}>
+	{dynamics.length > 0 ? <>
+		<div class="divide-y divide-[var(--line-divider)]">
+			{dynamics.map((entry) => <a href={url(`/dynamic/#${dynamicAnchor(entry.id)}`)} class="group block py-3 first:pt-1 last:pb-3">
+				<div class="flex items-center gap-1.5 text-xs text-50">
+					<time datetime={entry.data.published.toISOString()}>{formatDate(entry.data.published)}</time>
+					{entry.data.pinned && <span class="inline-flex items-center gap-0.5 text-[var(--primary)]"><Icon name="material-symbols:bookmark-rounded" />置顶</span>}
+				</div>
+				<p class="mt-1.5 line-clamp-2 text-sm leading-6 text-75 transition group-hover:text-[var(--primary)]">{dynamicPlainText(entry) || "图片动态"}</p>
+			</a>)}
+		</div>
+	</> : <p class="px-1 py-2 text-sm text-50">暂时没有动态。</p>}
+	<a href={url("/dynamic/")} class="mt-2 flex items-center justify-end gap-1 text-sm font-medium text-[var(--primary)] transition hover:opacity-75">更多动态<Icon name="material-symbols:arrow-forward-rounded" /></a>
+</WidgetLayout>

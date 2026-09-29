@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import DynamicFeed from "../../components/dynamic/DynamicFeed.svelte";
+import DynamicItem from "../../components/dynamic/DynamicItem.astro";
+import Comments from "../../components/misc/Comments.astro";
+import { commentConfig } from "../../config";
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+import { sortDynamics } from "../../utils/dynamic-utils";
+import "../../styles/dynamic.css";
+
+const dynamics = sortDynamics(await getCollection("dynamic"));
+---
+
+<MainGridLayout title="动态" description="随手记下此刻的想法与日常。">
+	<section class="dynamic-page" aria-labelledby="dynamic-title">
+		<header class="dynamic-intro card-base">
+			<div class="dynamic-intro-copy"><span class="dynamic-kicker">LIVE NOTES / {new Date().getFullYear()}</span><h1 id="dynamic-title">动态</h1><p>把没有必要写成文章的片段，留在时间线上。</p></div>
+			<div class="dynamic-intro-mark" aria-hidden="true">✳</div>
+		</header>
+		<DynamicFeed client:load>
+			{dynamics.map((entry) => <DynamicItem entry={entry} />)}
+		</DynamicFeed>
+		{commentConfig.enable && commentConfig.serverURL.trim() && commentConfig.siteName.trim() && <Comments customPath="/dynamic/" />}
+	</section>
+</MainGridLayout>

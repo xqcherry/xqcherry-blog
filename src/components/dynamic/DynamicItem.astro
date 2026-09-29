@@ -1,0 +1,44 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+import ImageWrapper from "../misc/ImageWrapper.astro";
+import { profileConfig } from "../../config";
+import { dynamicAnchor, dynamicSearchText } from "../../utils/dynamic-utils";
+import DynamicGallery from "./DynamicGallery.astro";
+
+interface Props {
+	entry: CollectionEntry<"dynamic">;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const anchor = dynamicAnchor(entry.id);
+const location = entry.data.location.trim();
+const formattedDate = entry.data.published.toLocaleString("zh-CN", {
+	year: "numeric",
+	month: "2-digit",
+	day: "2-digit",
+	hour: "2-digit",
+	minute: "2-digit",
+});
+---
+
+<article id={anchor} class="dynamic-item card-base" data-dynamic-item data-year={entry.data.published.getFullYear()} data-pinned={entry.data.pinned ? "true" : "false"} data-search={dynamicSearchText(entry)}>
+	<div class="dynamic-item-rule" aria-hidden="true"></div>
+	<header class="dynamic-item-header">
+		<a href="/about/" class="dynamic-avatar" aria-label={`查看 ${profileConfig.name} 的资料`}>
+			<ImageWrapper src={profileConfig.avatar || ""} alt={profileConfig.name} />
+		</a>
+		<div class="dynamic-identity">
+			<a href="/about/" class="dynamic-author">{profileConfig.name}</a>
+			<div class="dynamic-meta">
+				<a href={`#${anchor}`} class="dynamic-time"><time datetime={entry.data.published.toISOString()}>{formattedDate}</time></a>
+				{location && <span class="dynamic-location"><Icon name="material-symbols:location-on-rounded" />{location}</span>}
+				{entry.data.pinned && <span class="dynamic-pinned"><Icon name="material-symbols:bookmark-rounded" />置顶</span>}
+			</div>
+		</div>
+		<a href={`#${anchor}`} class="dynamic-permalink" aria-label="此动态的固定链接" title="固定链接"><Icon name="material-symbols:link-rounded" /></a>
+	</header>
+	<div class="dynamic-content custom-md"><Content /></div>
+	<DynamicGallery images={entry.data.gallery} />
+</article>
