@@ -14,7 +14,7 @@ const dynamics = sortDynamics(await getCollection("dynamic"));
 <MainGridLayout title="动态" description="随手记下此刻的想法与日常。">
 	<section class="dynamic-page" aria-labelledby="dynamic-title">
 		<header class="dynamic-intro card-base">
-			<div class="dynamic-intro-copy"><span class="dynamic-kicker">LIVE NOTES / {new Date().getFullYear()}</span><h1 id="dynamic-title">动态</h1><p>把没有必要写成文章的片段，留在时间线上。</p></div>
+			<div class="dynamic-intro-copy"><span class="dynamic-kicker">LIVE NOTES / {new Date().getFullYear()}</span><h1 id="dynamic-title">动态</h1><p>随手记下此刻的想法与日常</p></div>
 			<div class="dynamic-intro-mark" aria-hidden="true">✳</div>
 		</header>
 		<DynamicFeed client:load>
