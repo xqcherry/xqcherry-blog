@@ -1,5 +1,5 @@
 ---
-published: 2026-09-30 02:34:00
+published: 2026-09-30T02:34:00+08:00
 location: 深夜
 gallery:
   - src: /images/dynamic/late-night-reflections/wechat-image-1.jpg

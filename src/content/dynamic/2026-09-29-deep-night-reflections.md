@@ -1,5 +1,5 @@
 ---
-published: 2026-09-29 01:29:00
+published: 2026-09-29T01:29:00+08:00
 location: 夜晚
 gallery:
   - src: /images/dynamic/deep-night-reflections/sunset-1.jpg
